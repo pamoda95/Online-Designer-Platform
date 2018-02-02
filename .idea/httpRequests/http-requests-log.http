@@ -1,0 +1,8 @@
+POST http://localhost:3000/users/authenticate
+Content-Type: application/json
+Cache-Control: no-cache
+
+{username: "lash", password: "123456"}
+
+###
+
