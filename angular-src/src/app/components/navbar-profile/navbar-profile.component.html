@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <!--<button class="navbar-toggler navbar-toggler-right"  type="button" (click)="isCollapsed = !isCollapsed" data-target="#collapibleMenu" )>-->
-        <!--<span  class="navbar-toggler-icon"></span>-->
+      <!--<span  class="navbar-toggler-icon"></span>-->
       <!--</button>-->
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapibleMenu">
         <span class="icon-bar"></span>
@@ -24,16 +24,25 @@
         <li><a href="#">Contact us</a></li>
         <li><a href="#">Support</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-          <a class="nav-link"  [routerLink]="['/register']"><span class="glyphicon glyphicon-user" aria-hidden="true">
-                    Register</span></a>
-        </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-          <a class="nav-link"  [routerLink]="['/login']"><span class="glyphicon glyphicon-log-in" aria-hidden="true">
-                    Login</span></a>
+      <ul class="nav navbar-nav pull-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <!-- The Profile picture inserted via div class below, with shaping provided by Bootstrap -->
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            User Name <span class="caret "></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">Settings</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <a href="#">Log out</a>
+            </li>
+          </ul>
         </li>
       </ul>
+
 
 
     </div>
