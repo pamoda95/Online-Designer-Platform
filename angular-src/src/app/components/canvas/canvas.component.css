@@ -1,0 +1,150 @@
+body {
+  margin:0;
+  overflow: hidden;
+
+}
+
+canvas {
+  border: 2px solid black;
+}
+
+
+@media (min-width: 1200px) {
+  .container{
+    max-width: 100%;
+
+  }
+}
+
+
+.classWithPad{
+  margin: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.list-inline-item{
+  text-align: center;
+  padding: 2px 0;
+  transition: all 0.3s ease;
+  color: #f2f2f2;
+  font-size: 18px;
+}
+
+.list-inline-item:hover{
+  background: #ddd;
+  color: black;
+}
+
+.menue{
+  background-color: #333;
+}
+
+.title{
+  color: green;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.card {
+  margin: 5px;
+  padding: 5px;
+  background-color: #ededed;
+  border: solid 1px #d9d9d9;
+  margin-bottom: 20px;
+}
+
+
+.col-sm-2{
+  background: whitesmoke;
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+
+}
+
+.col-sm-3{
+  background: whitesmoke;
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+
+}
+
+.col-xl-12{
+  background: green;
+}
+
+.dropdown-toggle::after {
+  display:none
+}
+
+.dropdown-menu a {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.dropdown-menu{
+  background-color: #dddddd;
+}
+
+
+.icon-bar {
+  width: 100%;
+  background-color: whitesmoke;
+  /*background-color: #555;*/
+  overflow: auto;
+  border: 1px solid #e0e0e0;
+}
+
+.icon-bar a {
+  float: right;
+  /*gap between icon*/
+  width: 5%;
+  text-align: center;
+  padding: 2px 0;
+  transition: all 0.3s ease;
+  color: #8a8a8a;
+  font-size: 18px;
+}
+
+.icon-bar a:hover {
+  background-color: #626262;
+}
+
+
+
+
+
+label{
+  font-size:  20px ;
+  font-family: Impact, Charcoal, sans-serif;
+  color: #5d5d5d;
+}
+
+text{
+  border: 10px solid #979797;
+
+}
+
+/*.middle{*/
+/*overflow: auto;*/
+/*height: auto;*/
+/*padding: .5rem;*/
+/*-webkit-overflow-scrolling: touch;*/
+/*-ms-overflow-style: none;*/
+/*flex: 1px;*/
+/*}*/
+
+/*.middle::-webkit-scrollbar{*/
+/*display: none;*/
+/*}*/
+
+
+/*.Container {*/
+/*display: flex;*/
+/*overflow: hidden;*/
+/*height: 100vh;*/
+/*margin-top: -100px;*/
+/*padding-top: 100px;*/
+/*position: relative;*/
+/*width: 100%;*/
+/*backface-visibility: hidden;*/
+/*will-change: overflow;*/
+/*}*/

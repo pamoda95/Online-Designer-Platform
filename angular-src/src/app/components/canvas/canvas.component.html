@@ -1,0 +1,110 @@
+
+<!--<canvas id="canvas" class="canvas" ></canvas>-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 menue">
+      <h4 class="classWithPad title "> SoZo - Designer Platfrom</h4>
+      <ul class="list-inline classWithPad  ">
+        <li class="dropdown list-inline-item">
+          <a class="dropdown-toggle" data-toggle="dropdown">File</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li class="dropdown list-inline-item">
+          <a class="dropdown-toggle" data-toggle="dropdown">Edit</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li class="dropdown list-inline-item">
+          <a class="dropdown-toggle" data-toggle="dropdown">View</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="icon-bar col-sm-12 ">
+      <a href="#"><i class="fa fa-cloud"></i></a>
+      <a href="#"><i class="fa fa-upload"></i></a>
+      <a href="#"><i class="fa fa-sign-in"></i></a>
+      <a href="#"><i class="fa fa-sign-out"></i></a>
+      <a href="#"><i class="fa fa-share"></i></a>
+      <a href="#"><i class="fa fa-download"></i></a>
+      <a href="#"><i class="fa fa-home"></i></a>
+      <a href="#"><i class="fa fa-search"></i></a>
+      <a href="#"><i class="fa fa-envelope"></i></a>
+      <a href="#"><i class="fa fa-globe"></i></a>
+      <a href="#"><i class="fa fa-trash"></i></a>
+      <a href="#"><i class="fa fa-search-minus"></i></a>
+      <a href="#"><i class="fa fa-search-plus"></i></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-1 col-sm-3 " align="center"  >
+
+      <div class="card" >
+        <div class="card-block">
+          <div class="form-group">
+            <label for="getTxt"> Add Text</label>
+            <div class="input-group">
+              <input type="text" id="getTxt" class="form-control"  placeholder="Text..."  [(ngModel)]="textString">
+              <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button" (click)="getText()">Add</button>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" >
+        <div class="card-block">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="addImg">Add Image</label>
+              <input type="file" id="addImg" (change)="onFileChange($event)" #fileInput class="inputfile">
+              <p></p>
+              <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>
+            </div>
+            <button type="submit" [disabled]="form.invalid || loading" class="btn btn-secondary">Submit <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+          </form>
+
+
+
+          <!--<form id="UserForm" >-->
+          <!--<div class="form-group">-->
+          <!--<label for="Image">Add Image</label>-->
+          <!--<input type="file" class="form-control-file" id="Image" #UserImage formControlName="UserImage">-->
+          <!--<button type="submit" class="btn  btn-primary" >Submit</button>-->
+          <!--</div>-->
+          <!--</form>-->
+        </div>
+      </div>
+
+
+    </div>
+    <div class=" col-xs-10 col-sm-7  middle"style="height: 700px " >
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="col-xs-1  col-sm-2 " >
+
+      <h6>sec 4</h6>
+    </div>
+  </div>
+  <div class="row">
+    <!--<div class="col-xl-12 getToolbarContainer"></div>-->
+    <div class="col-sm-12 menue ">
+      <h1>sec5</h1>
+    </div>
+  </div>
+</div>

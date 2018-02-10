@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule,Routes} from "@angular/router";
+
+
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -14,6 +17,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {ValidateService} from "./services/validate.service";
 import {AuthService} from "./services/auth.service";
 import { NavbarProfileComponent } from './components/navbar-profile/navbar-profile.component';
+import { CanvasComponent } from './components/canvas/canvas.component';
 //import {FlashMessagesModule} from "angular2-flash-messages";
 
 const appRoutes :Routes =[
@@ -21,7 +25,8 @@ const appRoutes :Routes =[
   {path :'register' ,component:RegisterComponent},
   {path :'login' ,component:LoginComponent},
   {path :'dashboard' ,component:DashboardComponent},
-  {path :'profile' ,component:ProfileComponent}
+  {path :'profile' ,component:ProfileComponent},
+  {path :'canvas',component:CanvasComponent}
 ];
 
 @NgModule({
@@ -33,7 +38,8 @@ const appRoutes :Routes =[
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    NavbarProfileComponent
+    NavbarProfileComponent,
+    CanvasComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,7 @@ const appRoutes :Routes =[
     //HttpModule,
     RouterModule.forRoot(appRoutes),
     //FlashMessagesModule
+    ReactiveFormsModule
 
   ],
   providers: [ValidateService ,AuthService],
