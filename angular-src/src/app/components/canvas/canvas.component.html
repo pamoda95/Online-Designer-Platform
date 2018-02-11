@@ -1,6 +1,8 @@
 
 <!--<canvas id="canvas" class="canvas" ></canvas>-->
 
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12 menue">
@@ -36,13 +38,13 @@
   <div class="row">
     <div class="icon-bar col-sm-12 ">
       <a href="#"><i class="fa fa-cloud"></i></a>
-      <a href="#"><i class="fa fa-upload"></i></a>
+
       <a href="#"><i class="fa fa-sign-in"></i></a>
       <a href="#"><i class="fa fa-sign-out"></i></a>
       <a href="#"><i class="fa fa-share"></i></a>
-      <a href="#"><i class="fa fa-download"></i></a>
-      <a href="#"><i class="fa fa-home"></i></a>
-      <a href="#"><i class="fa fa-search"></i></a>
+      <a (click)="downloadPDF()"><i class="fa fa-download"></i></a>
+      <a (click)="saveCanvasToJSON();"><i class="fa fa-save"></i></a>
+      <a (click)="loadCanvasFromJSON();">load</a>
       <a href="#"><i class="fa fa-envelope"></i></a>
       <a href="#"><i class="fa fa-globe"></i></a>
       <a href="#"><i class="fa fa-trash"></i></a>
@@ -50,8 +52,37 @@
       <a href="#"><i class="fa fa-search-plus"></i></a>
     </div>
   </div>
+
+
   <div class="row">
     <div class="col-xs-1 col-sm-3 " align="center"  >
+
+      <div class="card" >
+        <div class="card-block">
+          <label for="getTxt"> Canvas Size</label>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" [(ngModel)]="size.width" (keyup)="changeSize()">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  Width
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" [(ngModel)]="size.height" (keyup)="changeSize()">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  Height
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <div class="card" >
         <div class="card-block">
@@ -66,30 +97,42 @@
           </div>
         </div>
       </div>
-
       <div class="card" >
         <div class="card-block">
-          <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-              <label for="addImg">Add Image</label>
-              <input type="file" id="addImg" (change)="onFileChange($event)" #fileInput class="inputfile">
-              <p></p>
-              <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>
+          <!--<a href="#"><i class="fa fa-upload"></i></a>-->
+          <label>Add Image</label>
+          <input type="file" (change)="readUrl($event);"   accept="image/x-png,image/gif,image/jpeg">
+          <br/>
+          <br/>
+          <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);" height="200" alt="Image preview...">
+          <br/>
+          <br/>
+          <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-sm btn-default" (click)="removeWhite(url);">
+              <!--<button type="button" class="btn btn-outline-danger btn-sm" (click)="removeWhite(url);">-->
+                <i class="fa fa-times" aria-hidden="true"></i> clear
+              </button>
             </div>
-            <button type="submit" [disabled]="form.invalid || loading" class="btn btn-secondary">Submit <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
-          </form>
+          </div>
 
 
 
-          <!--<form id="UserForm" >-->
-          <!--<div class="form-group">-->
-          <!--<label for="Image">Add Image</label>-->
-          <!--<input type="file" class="form-control-file" id="Image" #UserImage formControlName="UserImage">-->
-          <!--<button type="submit" class="btn  btn-primary" >Submit</button>-->
-          <!--</div>-->
+          <!--<form [formGroup]="form" (ngSubmit)="onSubmit()">-->
+            <!--<div class="form-group">-->
+              <!--<label for="addImg">Add Image-->
+              <!--</label>-->
+              <!--<input type="file" id="addImg" (change)="onFileChange($event)" #fileInput class="inputfile"   accept="image/x-png,image/gif,image/jpeg">-->
+              <!--<img src="" id="hi" height="200" alt="Image preview...">-->
+              <!--<p></p>-->
+              <!--<button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>-->
+            <!--</div>-->
+            <!--<button type="submit" [disabled]="form.invalid || loading" class="btn btn-secondary">Submit <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>-->
           <!--</form>-->
         </div>
       </div>
+
+
 
 
     </div>

@@ -5,7 +5,10 @@ body {
 }
 
 canvas {
-  border: 2px solid black;
+  border-style: dashed;
+  border-color: #cacaca;
+
+
 }
 
 
@@ -68,9 +71,7 @@ canvas {
 
 }
 
-.col-xl-12{
-  background: green;
-}
+
 
 .dropdown-toggle::after {
   display:none
@@ -106,6 +107,13 @@ canvas {
 
 .icon-bar a:hover {
   background-color: #626262;
+}
+
+
+.input-group-append .input-group-text{
+  color: whitesmoke;
+  background-color: #777777;
+  alignment: center;
 }
 
 
