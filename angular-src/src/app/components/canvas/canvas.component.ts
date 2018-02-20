@@ -138,14 +138,6 @@ export class CanvasComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
   downloadPDF(){
 
     let imgData = this.canvas.toDataURL("image/jpeg", 1.0);

@@ -33,15 +33,23 @@ export class LoginComponent implements OnInit {
     this.loading = true;
 
     this.authService.login(this.username, this.password).subscribe(result => {
-      //console.log("login component  " + result);
+      console.log("login component  " + result);
       if(result) {
         console.log("Login Successful!");
+        this.router.navigate(['/dashboard']);
         this.router.navigate(['/profile']);
       } else {
         console.log("Username or password is incorrect");
         this.loading = false;
+
       }
-    })
+    });
+
+    console.log(localStorage.getItem('id_token'));
+    console.log(localStorage.getItem('username'));
+
+
+
 
   }
 
