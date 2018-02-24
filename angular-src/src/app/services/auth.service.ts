@@ -8,8 +8,7 @@ import {User} from "../models/user";
 
 @Injectable()
 export class AuthService {
-//  authToken :any ;
- // user :any ;
+
   public token: string;
   public user:any;
 

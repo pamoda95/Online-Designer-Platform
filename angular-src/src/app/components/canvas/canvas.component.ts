@@ -66,7 +66,7 @@ export class CanvasComponent implements OnInit {
   }
 
 
-  // // get image from user
+   // get image from user
   addImageOnCanvas(url) {
     if (url) {
 
@@ -137,7 +137,7 @@ export class CanvasComponent implements OnInit {
 
 
 
-
+//download  canvas image as pdf
   downloadPDF(){
 
     let imgData = this.canvas.toDataURL("image/jpeg", 1.0);
