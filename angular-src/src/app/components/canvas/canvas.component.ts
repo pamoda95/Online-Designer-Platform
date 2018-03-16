@@ -1,12 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder ,FormGroup,Validators} from "@angular/forms";
+//import {CanService} from "../../services/can.service";
 import 'fabric';
 declare const fabric: any;
 //declare const jsPDF ;
-import * as jsPDF from 'jspdf'
+import * as jsPDF from 'jspdf';
 
 
-import * as domtoimage from 'dom-to-image';
+//import * as domtoimage from 'dom-to-image';
+//import {AuthService} from "../../services/auth.service";
 
 
 @Component({
@@ -27,13 +29,40 @@ export class CanvasComponent implements OnInit {
   private url: string = '';
 
   private size: any = {
-    width: 500,
-    height: 800
+    width: 700,
+    height: 700
   };
+
+
+  private props: any = {
+    canvasFill: '#ffffff',
+    // canvasImage: '',
+    // id: null,
+    // opacity: null,
+    fill: null,
+    fontSize: null,
+    // lineHeight: null,
+    charSpacing: null,
+    // fontWeight: null,
+    // fontStyle: null,
+    // textAlign: null,
+    // fontFamily: null,
+    // TextDecoration: ''
+  };
+
+  private json: any;
+  private globalEditor: boolean = false;
+  private textEditor: boolean = false;
+  private imageEditor: boolean = false;
+  private figureEditor: boolean = false;
+  private selected: any;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    //private canService :CanService
+  ) {
     // this.createForm();
   }
 
@@ -46,12 +75,73 @@ export class CanvasComponent implements OnInit {
       width :this.size.width,
       height: this.size.height,
     });
-    console.log(this.canvas);
+   // console.log(this.canvas);
+
+
+    this.canvas.on({
+      'object:moving': (e) => { },
+      'object:modified': (e) => { },
+      'object:selected': (e) => {
+
+        console.log('@@@@@object selected ',e.target.type);
+        let selectedObject = e.target;
+
+
+        this.selected = selectedObject;
+        console.log('selected :',this.selected);
+        selectedObject.hasRotatingPoint = true;
+        selectedObject.transparentCorners = false;
+        // selectedObject.cornerColor = 'rgba(255, 87, 34, 0.7)';
+
+        this.resetPanels();
+
+        if (selectedObject.type !== 'group' && selectedObject) {
+
+         // this.getId();
+         // this.getOpacity();
+
+          switch (selectedObject.type) {
+            case 'rect':
+            case 'circle':
+            case 'triangle':
+              this.figureEditor = true;
+              this.getFill();
+              break;
+            case 'text':
+              this.textEditor = true;
+              console.log('textEditor:',this.textEditor);
+             // this.getLineHeight();
+              this.getCharSpacing();
+             // this.getBold();
+             // this.getFontStyle();
+              this.getFill();
+             // this.getTextDecoration();
+             // this.getTextAlign();
+             // this.getFontFamily();
+              break;
+            case 'image':
+              console.log('image');
+              break;
+          }
+        }
+      },
+      'selection:cleared': (e) => {
+        this.selected = null;
+        this.resetPanels();
+      }
+    });
+
+
+
+
 
 
   }
 
 
+
+
+  //To change canvas size
   changeSize(event: any) {
     this.canvas.setWidth(this.size.width);
     this.canvas.setHeight(this.size.height);
@@ -68,8 +158,8 @@ export class CanvasComponent implements OnInit {
 
    // get image from user
   addImageOnCanvas(url) {
-    if (url) {
 
+    if (url) {
       fabric.Image.fromURL(url, (image) => {
         image.set({
           left: 10,
@@ -88,6 +178,7 @@ export class CanvasComponent implements OnInit {
     }
   }
 
+  //read image url
   readUrl(event) {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
@@ -109,8 +200,10 @@ export class CanvasComponent implements OnInit {
   saveCanvasToJSON() {
     let json = JSON.stringify(this.canvas);
     localStorage.setItem('Kanvas', json);
-    console.log('json');
-    console.log(json);
+   //  console.log('json');
+   //  console.log(json);
+   // this.canService.saveCanvas(json);
+
 
   }
 
@@ -134,6 +227,61 @@ export class CanvasComponent implements OnInit {
 
   };
 
+  getActiveStyle(styleName, object) {
+    object = object || this.canvas.getActiveObject();
+    if (!object) return '';
+
+    return (object.getSelectionStyles && object.isEditing)
+      ? (object.getSelectionStyles()[styleName] || '')
+      : (object[styleName] || '');
+  }
+
+
+  setActiveStyle(styleName, value, object) {
+    object = object || this.canvas.getActiveObject();
+    if (!object) return;
+
+    if (object.setSelectionStyles && object.isEditing) {
+      let style = {};
+      style[styleName] = value;
+      object.setSelectionStyles(style);
+      object.setCoords();
+    }
+    else {
+      object.set(styleName, value);
+    }
+
+    object.setCoords();
+    this.canvas.renderAll();
+  }
+
+
+
+
+
+
+
+  setFontSize() {
+    this.setActiveStyle('fontSize', parseInt(this.props.fontSize), null);
+  }
+
+
+  getCharSpacing() {
+    this.props.charSpacing = this.getActiveStyle('charSpacing', null);
+  }
+
+  setCharSpacing() {
+    this.setActiveStyle('charSpacing', this.props.charSpacing, null);
+  }
+
+  getFill() {
+    this.props.fill = this.getActiveStyle('fill', null);
+  }
+
+  setFill() {
+    this.setActiveStyle('fill', this.props.fill, null);
+  }
+
 
 
 
@@ -152,6 +300,11 @@ export class CanvasComponent implements OnInit {
 
 
 
+  resetPanels() {
+    this.textEditor = false;
+    this.imageEditor = false;
+    this.figureEditor = false;
+  }
 
 
 

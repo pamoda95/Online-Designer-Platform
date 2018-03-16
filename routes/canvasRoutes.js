@@ -6,13 +6,14 @@ const config = require('../config/database');
 const canvas = require('../models/canvas');
 
 
-
+//save canvas JSON objects to the database
 router.post('/addCanvas' ,(req, res ,next) => {
     let newCanvas = new canvas ({
         CanvasName:req.body.CanvasName,
         Username :req.body.Username ,
         CanvasElement:req.body.CanvasElement
     });
+    console.log('routes'+ newCanvas);
     canvas.addCanvas(newCanvas,(err, canvas) =>{
 
         if (err){
@@ -24,18 +25,6 @@ router.post('/addCanvas' ,(req, res ,next) => {
     })
 } );
 
-// router.post('/register', (req, res, next) => {
-//     let newUser = new User({
-//         name: req.body.name,
-//         email: req.body.email,
-//         username: req.body.username,
-//         password: req.body.password
-//     });
-//
-//     User.addUser(newUser, (err, user) => {
-//
-//     });
-// });
 
 
 module.exports = router;

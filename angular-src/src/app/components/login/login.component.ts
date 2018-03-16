@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
 
   }
 
+  // on click LogIn
   onLoginSubmit(){
     this.loading = true;
 

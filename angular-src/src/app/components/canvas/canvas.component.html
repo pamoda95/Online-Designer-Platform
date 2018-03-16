@@ -37,19 +37,18 @@
   </div>
   <div class="row">
     <div class="icon-bar col-sm-12 ">
-      <a href="#"><i class="fa fa-cloud"></i></a>
-
       <a href="#"><i class="fa fa-sign-in"></i></a>
       <a href="#"><i class="fa fa-sign-out"></i></a>
+      <a href="#"><i class="fa fa-cloud"></i></a>
       <a href="#"><i class="fa fa-share"></i></a>
       <a (click)="downloadPDF()"><i class="fa fa-download"></i></a>
       <a (click)="saveCanvasToJSON();"><i class="fa fa-save"></i></a>
       <!--<a (click)="loadCanvasFromJSON();">load</a>-->
-      <!--<a href="#"><i class="fa fa-envelope"></i></a>-->
-      <!--<a href="#"><i class="fa fa-globe"></i></a>-->
       <a href="#"><i class="fa fa-trash"></i></a>
       <a href="#"><i class="fa fa-search-minus"></i></a>
       <a href="#"><i class="fa fa-search-plus"></i></a>
+      <a href="#"><i class="fa fa-undo"></i></a>
+      <a href="#"><i class="far fa-redo"></i></a>
     </div>
   </div>
 
@@ -104,7 +103,7 @@
           <input type="file" (change)="readUrl($event);"   accept="image/x-png,image/gif,image/jpeg">
           <br/>
           <br/>
-          <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);" height="200" alt="Image preview...">
+          <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);" height="200" width="250" alt="Image preview...">
           <br/>
           <br/>
           <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -135,13 +134,155 @@
 
 
 
+
+
+
+
+
     </div>
     <div class=" col-xs-10 col-sm-7  middle"style="height: 700px " >
       <canvas id="canvas"></canvas>
     </div>
-    <div class="col-xs-1  col-sm-2 " >
 
-      <h6>sec 4</h6>
+
+
+
+    <div class="col-xs-1  col-sm-2 " >
+       <h6>sec 4</h6>
+
+        <br/>
+
+        <br/>
+        <div class="card">
+          <div class="card-header">Custom</div>
+          <div class="card-body">
+            <!--<div class="custom-item" *ngIf="selected  && selected.type == 'group'">Group Selected</div>-->
+            <!--<div class="custom-item" *ngIf="!selected">No items selected</div>-->
+            <!--<div class="custom-item" *ngIf="selected && selected.type != 'group'">-->
+              <!--<div class="custom-item-title">ID</div>-->
+              <!--<div class="custom-item-body">-->
+                <!--<input type="text" class="form-control" [(ngModel)]="props.id" (keyup)="setId()">-->
+              <!--</div>-->
+            <!--</div>-->
+
+
+            <!--@@Opacity-->
+            <!--<div class="custom-item" *ngIf="selected && selected.type != 'group'">-->
+              <!--<div class="custom-item-title">Opacity</div>-->
+              <!--<div class="custom-item-body">-->
+                <!--<input type="range" [(ngModel)]="props.opacity" (change)="setOpacity()">{{props.opacity}}</div>-->
+            <!--</div>-->
+
+
+
+            <!--@@fill-->
+            <!--<div class="custom-item" *ngIf="selected && textEditor || selected && figureEditor">-->
+              <!--<div class="custom-item-title">Fill</div>-->
+              <!--<div class="custom-item-body">-->
+                <!--<input type="text" class="form-control" [cpPosition]="'bottom'" [(colorPicker)]="props.fill" [style.background]="props.fill"-->
+                       <!--[value]="props.fill" (colorPickerChange)="setFill()">-->
+              <!--</div>-->
+            <!--</div>-->
+
+
+
+
+            <!--<div class="custom-item" *ngIf="selected && textEditor">-->
+              <!--<div class="custom-item-title">Font family</div>-->
+              <!--<div class="custom-item-body">-->
+                <!--<select [(ngModel)]="props.fontFamily" class="form-control" (change)="setFontFamily()">-->
+                  <!--<option value="arial">Arial</option>-->
+                  <!--<option value="helvetica" selected>Helvetica</option>-->
+                  <!--<option value="verdana">Verdana</option>-->
+                  <!--<option value="courier">Courier</option>-->
+                  <!--<option value="Roboto">Roboto</option>-->
+                  <!--<option value="Open Sans">Open Sans</option>-->
+                  <!--<option value="Zilla Slab">Zilla Slab</option>-->
+                  <!--<option value="Lato">Lato</option>-->
+                  <!--<option value="Bellefair">Bellefair</option>-->
+                  <!--<option value="Fresca">Fresca</option>-->
+                  <!--<option value="Raleway">Raleway</option>-->
+                  <!--<option value="Open Sans Condensed">Open Sans Condensed</option>-->
+                  <!--<option value="Indie Flower">Indie Flower</option>-->
+                  <!--<option value="Josefin Sans">Josefin Sans</option>-->
+                  <!--<option value="Inconsolata">Inconsolata</option>-->
+                  <!--<option value="Pacifico">Pacifico</option>-->
+                  <!--<option value="Gloria Hallelujah">Gloria Hallelujah</option>-->
+                <!--</select>-->
+              <!--</div>-->
+            <!--</div>-->
+
+
+            <!--<div class="custom-item" *ngIf="selected && textEditor">-->
+              <!--<div class="custom-item-title">Text Align</div>-->
+              <!--<div class="custom-item-body text-center">-->
+                <!--<div class="btn-group" role="group" aria-label="...">-->
+                  <!--<button type="button" class="btn btn-primary" [ngClass]="{'active': props.textAlign == 'left' }" (click)="setTextAlign('left')">-->
+                    <!--<i class="fa fa-align-left"></i>-->
+                  <!--</button>-->
+                  <!--<button type="button" class="btn btn-primary" [ngClass]="{'active': props.textAlign == 'center' }" (click)="setTextAlign('center')">-->
+                    <!--<i class="fa fa-align-center"></i>-->
+                  <!--</button>-->
+                  <!--<button type="button" class="btn btn-primary" [ngClass]="{'active': props.textAlign == 'right' }" (click)="setTextAlign('right')">-->
+                    <!--<i class="fa fa-align-right"></i>-->
+                  <!--</button>-->
+                  <!--<button type="button" class="btn btn-primary" [ngClass]="{'active': props.textAlign == 'justify' }" (click)="setTextAlign('justify')">-->
+                    <!--<i class="fa fa-align-justify"></i>-->
+                  <!--</button>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+
+
+
+
+            <!--<div class="custom-item" *ngIf="selected && textEditor">-->
+              <!--<div class="custom-item-title">Style</div>-->
+              <!--<div class="custom-item-body text-center">-->
+                <!--<div class="btn-group" role="group" aria-label="...">-->
+                  <!--<button type="button" class="btn btn-primary btn-sm" [ngClass]="{'active': props.fontWeight }" (click)="setBold()">-->
+                    <!--<i class="fa fa-bold"></i>-->
+                  <!--</button>-->
+                  <!--<button type="button" class="btn btn-primary btn-sm" [ngClass]="{'active': props.fontStyle }" (click)="setFontStyle()">-->
+                    <!--<i class="fa fa-italic"></i>-->
+                  <!--</button>-->
+                  <!--<button type="button" class="btn btn-primary btn-sm" [ngClass]="{'active': hasTextDecoration('underline') }"-->
+                          <!--(click)="setTextDecoration('underline')">-->
+                    <!--<i class="fa fa-underline"></i>-->
+                  <!--</button>-->
+                  <!--<button type="button" class="btn btn-primary btn-sm" [ngClass]="{'active': hasTextDecoration('overline') }"-->
+                          <!--(click)="setTextDecoration('overline')">-->
+                    <!--<i class="fa fa-underline fa-flip-vertical"></i>-->
+                  <!--</button>-->
+                  <!--<button type="button" class="btn btn-primary btn-sm" [ngClass]="{'active': hasTextDecoration('line-through') }"-->
+                          <!--(click)="setTextDecoration('line-through')">-->
+                    <!--<i class="fa fa-strikethrough"></i>-->
+                  <!--</button>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+
+
+
+            <div class="custom-item" *ngIf="selected && textEditor">
+              <div class="custom-item-title">Font Size</div>
+              <div class="custom-item-body">
+                <input type="range" [(ngModel)]="props.fontSize" (change)="setFontSize()" step="1" min="1" max="120">{{props.fontSize}}</div>
+            </div>
+
+            <div class="custom-item" *ngIf="selected && textEditor">
+              <div class="custom-item-title">Char Spacing</div>
+              <div class="custom-item-body">
+                <input type="range" [(ngModel)]="props.charSpacing" (change)="setCharSpacing()" step="10" min="-200" max="800">{{props.charSpacing}}</div>
+            </div>
+
+
+          </div>
+        </div>
+
+
+
+
     </div>
   </div>
   <div class="row">

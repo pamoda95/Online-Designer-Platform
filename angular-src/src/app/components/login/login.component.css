@@ -4,3 +4,14 @@
 
   }
 }
+
+.btn-default {
+  color: whitesmoke;
+  background-color: #333333;
+  border-color: #333333;
+
+}
+.btn:hover {
+  color: green;
+  background-color: #333333;
+}

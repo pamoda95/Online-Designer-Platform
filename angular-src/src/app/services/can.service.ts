@@ -8,7 +8,6 @@ import 'rxjs/add/operator/map'
 export class CanService {
 
 
-
   private  CanvasName : String;
   private  Username :String;
   private CanvasElement :Object;
@@ -17,8 +16,8 @@ export class CanService {
 
   constructor(private http :HttpClient ) { }
 
-
-  registerUser(canvas:any){
+//supports to save canvas objects
+  saveCanvas(canvas:any){
 
     this.CanvasName=canvas.CanvasName;
     this.Username=canvas.Username;
@@ -33,7 +32,7 @@ export class CanService {
       .subscribe(
         res => {
           console.log(res);
-          console.log("444444 registered");
+          console.log(" canvas Saved ");
         },
         err => {
           console.log("Error occured");

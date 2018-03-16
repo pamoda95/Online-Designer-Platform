@@ -23,6 +23,7 @@ const canvasSchema = mongoose.Schema({
 const Canvas = module.exports = mongoose.model('Canvas', canvasSchema);
 
 
+//add canvas JSON objects to the database
 module.exports.addCanvas = function (newCanvas ,callback) {
     console.log("add canvas works");
     newCanvas.save(callback);
