@@ -14,6 +14,7 @@ import {ValidateService} from "./services/validate.service";
 import {AuthService} from "./services/auth.service";
 import { CanvasComponent } from './components/canvas/canvas.component';
 //import {FlashMessagesModule} from "angular2-flash-messages";
+import { ColorPickerModule } from 'ngx-color-picker';
 
 const appRoutes :Routes =[
   {path :'' ,component:HomeComponent},
@@ -40,7 +41,8 @@ const appRoutes :Routes =[
     //HttpModule,
     RouterModule.forRoot(appRoutes),
     //FlashMessagesModule
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ColorPickerModule
 
   ],
   providers: [ValidateService ,AuthService],

@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder ,FormGroup,Validators} from "@angular/forms";
+
 //import {CanService} from "../../services/can.service";
 import 'fabric';
 declare const fabric: any;
@@ -27,10 +28,11 @@ export class CanvasComponent implements OnInit {
   private textString;
   //upload img
   private url: string = '';
+  private backgroundImgUrl:string="";
 
   private size: any = {
-    width: 700,
-    height: 700
+    width: 500,
+    height: 300
   };
 
 
@@ -44,9 +46,9 @@ export class CanvasComponent implements OnInit {
     // lineHeight: null,
     charSpacing: null,
     // fontWeight: null,
-    // fontStyle: null,
+    fontStyle: null,
     // textAlign: null,
-    // fontFamily: null,
+    fontFamily: null,
     // TextDecoration: ''
   };
 
@@ -117,7 +119,7 @@ export class CanvasComponent implements OnInit {
               this.getFill();
              // this.getTextDecoration();
              // this.getTextAlign();
-             // this.getFontFamily();
+              this.getFontFamily();
               break;
             case 'image':
               console.log('image');
@@ -155,8 +157,48 @@ export class CanvasComponent implements OnInit {
 
   }
 
+  setBackgroundImage(url){
 
-   // get image from user
+    if (url) {
+      fabric.Image.fromURL(url, (image) => {
+        image.set({
+          angle: 0,
+          padding: 10,
+          cornersize: 10,
+          hasRotatingPoint: true
+        });
+
+        // image.setWidth(this.size.width);
+        // image.setHeight(this.size.height);
+
+
+        //set background Image
+        this.canvas.setBackgroundImage(image, this.canvas.renderAll.bind(this.canvas), {
+          backgroundImageOpacity: 0.5,
+          backgroundImageStretch: false
+        });
+        //this.selectItemAfterAdded(image);
+      });
+    }
+
+  }
+  readBackgroundImagUrl(event) {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event) => {
+        this. backgroundImgUrl = event.target['result'];
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  removeBackgroundImage(url) {
+    this. backgroundImgUrl = '';
+  };
+
+
+
+  // get image from user
   addImageOnCanvas(url) {
 
     if (url) {
@@ -171,9 +213,11 @@ export class CanvasComponent implements OnInit {
         });
         image.setWidth(200);
         image.setHeight(200);
+
         // this.extend(image, this.randomId());
         this.canvas.add(image);
-        // this.selectItemAfterAdded(image);
+
+         //this.selectItemAfterAdded(image);
       });
     }
   }
@@ -192,6 +236,26 @@ export class CanvasComponent implements OnInit {
   removeWhite(url) {
     this.url = '';
   };
+
+
+  getImgPolaroid(event: any) {
+    let el = event.target;
+    fabric.Image.fromURL(el.src, (image) => {
+      image.set({
+        left: 10,
+        top: 10,
+        angle: 0,
+        padding: 10,
+        cornersize: 10,
+        hasRotatingPoint: true,
+        peloas: 12
+      });
+      image.setWidth(150);
+      image.setHeight(150);
+      this.canvas.add(image);
+
+    });
+  }
 
 
 
@@ -254,6 +318,20 @@ export class CanvasComponent implements OnInit {
     object.setCoords();
     this.canvas.renderAll();
   }
+  getActiveProp(name) {
+    let object = this.canvas.getActiveObject();
+    if (!object) return '';
+
+    return object[name] || '';
+  }
+
+  setActiveProp(name, value) {
+    let object = this.canvas.getActiveObject();
+    if (!object) return;
+    object.set(name, value).setCoords();
+    this.canvas.renderAll();
+  }
+
 
 
 
@@ -280,6 +358,47 @@ export class CanvasComponent implements OnInit {
 
   setFill() {
     this.setActiveStyle('fill', this.props.fill, null);
+  }
+
+  getFontStyle() {
+    this.props.fontStyle = this.getActiveStyle('fontStyle', null);
+  }
+
+  setFontStyle() {
+    this.props.fontStyle = !this.props.fontStyle;
+    this.setActiveStyle('fontStyle', this.props.fontStyle ? 'italic' : '', null);
+  }
+
+
+  getFontFamily() {
+    this.props.fontFamily = this.getActiveProp('fontFamily');
+  }
+
+  setFontFamily() {
+    this.setActiveProp('fontFamily', this.props.fontFamily);
+  }
+
+
+
+
+
+
+  removeSelected() {
+    let activeObject = this.canvas.getActiveObject(),
+      activeGroup = this.canvas.getActiveGroup();
+
+    if (activeObject) {
+      this.canvas.remove(activeObject);
+      // this.textString = '';
+    }
+    else if (activeGroup) {
+      let objectsInGroup = activeGroup.getObjects();
+      this.canvas.discardActiveGroup();
+      let self = this;
+      objectsInGroup.forEach(function (object) {
+        self.canvas.remove(object);
+      });
+    }
   }
 
 
