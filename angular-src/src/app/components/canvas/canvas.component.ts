@@ -242,18 +242,16 @@ export class CanvasComponent implements OnInit {
     let el = event.target;
     fabric.Image.fromURL(el.src, (image) => {
       image.set({
-        left: 10,
-        top: 10,
+
         angle: 0,
         padding: 10,
-        cornersize: 10,
         hasRotatingPoint: true,
-        peloas: 12
       });
-      image.setWidth(150);
-      image.setHeight(150);
-      this.canvas.add(image);
-
+      //set background Image
+      this.canvas.setBackgroundImage(image, this.canvas.renderAll.bind(this.canvas), {
+        backgroundImageOpacity: 0.5,
+        backgroundImageStretch: false
+      });
     });
   }
 
