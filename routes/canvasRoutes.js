@@ -8,15 +8,19 @@ const canvas = require('../models/canvas');
 
 //save canvas JSON objects to the database
 router.post('/addCanvas' ,(req, res ,next) => {
+
+    console.log(req.body);
+
     let newCanvas = new canvas ({
-        CanvasName:req.body.CanvasName,
+        CanvasName: "name",
         Username :req.body.Username ,
-        CanvasElement:req.body.CanvasElement
+        CanvasElement: req.body.CanvasElement
     });
     console.log('routes'+ newCanvas);
-    canvas.addCanvas(newCanvas,(err, canvas) =>{
+    canvas.addCanvas(newCanvas,(err) =>{
 
         if (err){
+            console.log(err);
             res.json({success: false ,msg :'Failed to add canvas'});
         }else
         {
@@ -25,6 +29,13 @@ router.post('/addCanvas' ,(req, res ,next) => {
     })
 } );
 
+// Get Canvas
+router.get('/getCanvas/:username/:canvasName', (req, res, next) => {
+    canvas.getCanvas({Username: req.params.username, CanvasName: req.params.canvasName}, (err, canvas) => {
+           if(err) throw err;
+           res.json({success: true, canvas: canvas,  msg: "Canvas Fetched!"})
+    })
+});
 
 
 module.exports = router;

@@ -17,14 +17,14 @@ export class CanService {
   constructor(private http :HttpClient ) { }
 
 //supports to save canvas objects
-  saveCanvas(canvas:any){
+  saveCanvas(canvas:any, username: string){
 
     this.CanvasName=canvas.CanvasName;
-    this.Username=canvas.Username;
-    this.CanvasElement=canvas.CanvasElement;
+    this.Username=username;
+    this.CanvasElement=canvas;
 
 
-    return this.http.post('http://localhost:3000/users/register', {
+    return this.http.post('http://localhost:3000/canvasRoutes/addCanvas', {
       CanvasName: this.CanvasName,
       Username: this.Username,
       CanvasElement: this.CanvasElement,
@@ -41,4 +41,10 @@ export class CanService {
 
   }
 
+  getCanvas(username: string, canvasName: string) {
+    return this.http.get("http://localhost:3000/canvasRoutes/getCanvas/".concat(username).concat("/").concat(canvasName))
+      .subscribe(canvas => {
+        console.log(canvas);
+      });
+  }
 }

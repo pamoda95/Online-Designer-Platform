@@ -29,5 +29,11 @@ module.exports.addCanvas = function (newCanvas ,callback) {
     newCanvas.save(callback);
 };
 
+module.exports.getCanvas = function ( canvasParam ,callback) {
+    Canvas.find( canvasParam , callback);
+};
+
+
+
 
 

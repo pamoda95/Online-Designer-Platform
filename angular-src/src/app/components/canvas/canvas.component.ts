@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder ,FormGroup,Validators} from "@angular/forms";
 
-//import {CanService} from "../../services/can.service";
+import {CanService} from "../../services/can.service";
 import 'fabric';
 declare const fabric: any;
 //declare const jsPDF ;
@@ -15,7 +15,8 @@ import * as jsPDF from 'jspdf';
 @Component({
   selector: 'app-canvas',
   templateUrl: './canvas.component.html',
-  styleUrls: ['./canvas.component.css']
+  styleUrls: ['./canvas.component.css'],
+  providers: [CanService]
 })
 export class CanvasComponent implements OnInit {
 
@@ -63,7 +64,7 @@ export class CanvasComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    //private canService :CanService
+    private canService :CanService
   ) {
     // this.createForm();
   }
@@ -78,7 +79,6 @@ export class CanvasComponent implements OnInit {
       height: this.size.height,
     });
    // console.log(this.canvas);
-
 
     this.canvas.on({
       'object:moving': (e) => { },
@@ -133,11 +133,7 @@ export class CanvasComponent implements OnInit {
       }
     });
 
-
-
-
-
-
+    // this.canService.getCanvas("pamo", "name");
   }
 
 
@@ -263,29 +259,34 @@ export class CanvasComponent implements OnInit {
     let json = JSON.stringify(this.canvas);
     localStorage.setItem('Kanvas', json);
    //  console.log('json');
-   //  console.log(json);
-   // this.canService.saveCanvas(json);
+     console.log(json);
+    this.canService.saveCanvas(json, localStorage.getItem("username"));
 
 
   }
 
+
   loadCanvasFromJSON() {
-    let CANVAS = localStorage.getItem('Kanvas');
+
+    let CANVAS= this.canService.getCanvas(localStorage.getItem("username"), "name");
+
+
+
+    //let CANVAS = localStorage.getItem('Kanvas');
     console.log('CANVAS');
     console.log(CANVAS);
 
     // and load everything from the same json
-    this.canvas.loadFromJSON(CANVAS, () => {
-      console.log('CANVAS untar');
-      console.log(CANVAS);
 
-      // making sure to render canvas at the end
-      this.canvas.renderAll();
-
-      // and checking if object's "name" is preserved
-      console.log('this.canvas.item(0).name');
-      console.log(this.canvas);
-    });
+    // this.canvas.loadFromJSON(CANVAS, () => {
+    //   console.log('CANVAS untar');
+    //   console.log(CANVAS);
+    //
+    //
+    //   this.canvas.renderAll();
+    //
+    //   console.log(this.canvas);
+    // });
 
   };
 
@@ -329,13 +330,6 @@ export class CanvasComponent implements OnInit {
     object.set(name, value).setCoords();
     this.canvas.renderAll();
   }
-
-
-
-
-
-
-
 
   setFontSize() {
     this.setActiveStyle('fontSize', parseInt(this.props.fontSize), null);

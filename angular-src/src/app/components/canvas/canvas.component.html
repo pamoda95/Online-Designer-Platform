@@ -40,7 +40,7 @@
       <a href="#"><i class="fa fa-sign-in"></i></a>
       <a href="#"><i class="fa fa-sign-out"></i></a>
       <a href="#"><i class="fa fa-cloud"></i></a>
-      <a href="#"><i class="fa fa-share"></i></a>
+      <a (click)="loadCanvasFromJSON();"><i class="fa fa-share"></i></a>
       <a (click)="downloadPDF()"><i class="fa fa-download"></i></a>
       <a (click)="saveCanvasToJSON();"><i class="fa fa-save"></i></a>
       <!--<a (click)="loadCanvasFromJSON();">load</a>-->
@@ -98,7 +98,8 @@
           <input type="file" (change)="readBackgroundImagUrl($event);"   accept="image/x-png,image/gif,image/jpeg">
           <br/>
           <br/>
-          <img id="backImage" *ngIf="backgroundImgUrl" class="images-item-upload" [src]=" backgroundImgUrl" (click)="setBackgroundImage( backgroundImgUrl);" height="100" width="200" alt="">
+          <img id="backImage" *ngIf="backgroundImgUrl" class="images-item-upload" [src]=" backgroundImgUrl"
+               (click)="setBackgroundImage( backgroundImgUrl);" height="100" width="200" alt="">
           <br/>
           <br/>
           <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -144,7 +145,8 @@
           <input type="file" (change)="readUrl($event);"   accept="image/x-png,image/gif,image/jpeg">
           <br/>
           <br/>
-          <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);" height="100" width="150" alt="Image preview...">
+          <img id="testImage" *ngIf="url" class="images-item-upload" [src]="url" (click)="addImageOnCanvas(url);"
+               height="100" width="150" alt="Image preview...">
           <br/>
           <br/>
           <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -183,22 +185,6 @@
         <div class="card">
           <div class="card-header">Custom</div>
           <div class="card-body">
-            <!--<div class="custom-item" *ngIf="selected  && selected.type == 'group'">Group Selected</div>-->
-            <!--<div class="custom-item" *ngIf="!selected">No items selected</div>-->
-            <!--<div class="custom-item" *ngIf="selected && selected.type != 'group'">-->
-              <!--<div class="custom-item-title">ID</div>-->
-              <!--<div class="custom-item-body">-->
-                <!--<input type="text" class="form-control" [(ngModel)]="props.id" (keyup)="setId()">-->
-              <!--</div>-->
-            <!--</div>-->
-
-
-            <!--@@Opacity-->
-            <!--<div class="custom-item" *ngIf="selected && selected.type != 'group'">-->
-              <!--<div class="custom-item-title">Opacity</div>-->
-              <!--<div class="custom-item-body">-->
-                <!--<input type="range" [(ngModel)]="props.opacity" (change)="setOpacity()">{{props.opacity}}</div>-->
-            <!--</div>-->
 
 
 
@@ -206,7 +192,8 @@
             <div class="custom-item" *ngIf="selected && textEditor || selected && figureEditor">
               <div class="custom-item-title">Fill</div>
               <div class="custom-item-body">
-                <input type="text" class="form-control" [cpPosition]="'left'" [cpOutputFormat] ="'rgba'"       [(colorPicker)]="props.fill" [style.background]="props.fill"
+                <input type="text" class="form-control" [cpPosition]="'left'" [cpOutputFormat] ="'rgba'"
+                       [(colorPicker)]="props.fill" [style.background]="props.fill"
                        [value]="props.fill" (colorPickerChange)="setFill()">
               </div>
             </div>
@@ -257,44 +244,18 @@
 
 
 
-            <!--<div class="custom-item" *ngIf="selected && textEditor">-->
-              <!--<div class="custom-item-title">Style</div>-->
-              <!--<div class="custom-item-body text-center">-->
-                <!--<div class="btn-group" role="group" aria-label="...">-->
-                  <!--<button type="button" class="btn btn-primary btn-sm" [ngClass]="{'active': props.fontWeight }" (click)="setBold()">-->
-                    <!--<i class="fa fa-bold"></i>-->
-                  <!--</button>-->
-                  <!--<button type="button" class="btn btn-primary btn-sm" [ngClass]="{'active': props.fontStyle }" (click)="setFontStyle()">-->
-                    <!--<i class="fa fa-italic"></i>-->
-                  <!--</button>-->
-                  <!--<button type="button" class="btn btn-primary btn-sm" [ngClass]="{'active': hasTextDecoration('underline') }"-->
-                          <!--(click)="setTextDecoration('underline')">-->
-                    <!--<i class="fa fa-underline"></i>-->
-                  <!--</button>-->
-                  <!--<button type="button" class="btn btn-primary btn-sm" [ngClass]="{'active': hasTextDecoration('overline') }"-->
-                          <!--(click)="setTextDecoration('overline')">-->
-                    <!--<i class="fa fa-underline fa-flip-vertical"></i>-->
-                  <!--</button>-->
-                  <!--<button type="button" class="btn btn-primary btn-sm" [ngClass]="{'active': hasTextDecoration('line-through') }"-->
-                          <!--(click)="setTextDecoration('line-through')">-->
-                    <!--<i class="fa fa-strikethrough"></i>-->
-                  <!--</button>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-
-
-
             <div class="custom-item" *ngIf="selected && textEditor">
               <div class="custom-item-title">Font Size</div>
               <div class="custom-item-body">
-                <input type="range" [(ngModel)]="props.fontSize" (change)="setFontSize()" step="1" min="1" max="120">{{props.fontSize}}</div>
+                <input type="range" [(ngModel)]="props.fontSize" (change)="setFontSize()" step="1" min="1" max="120">
+                {{props.fontSize}}</div>
             </div>
 
             <div class="custom-item" *ngIf="selected && textEditor">
               <div class="custom-item-title">Char Spacing</div>
               <div class="custom-item-body">
-                <input type="range" [(ngModel)]="props.charSpacing" (change)="setCharSpacing()" step="10" min="-200" max="800">{{props.charSpacing}}</div>
+                <input type="range" [(ngModel)]="props.charSpacing" (change)="setCharSpacing()" step="10" min="-200" max="800">
+                {{props.charSpacing}}</div>
             </div>
 
 
