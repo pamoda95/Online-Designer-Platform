@@ -33,9 +33,34 @@ router.post('/addCanvas' ,(req, res ,next) => {
 router.get('/getCanvas/:username/:canvasName', (req, res, next) => {
     canvas.getCanvas({Username: req.params.username, CanvasName: req.params.canvasName}, (err, canvas) => {
            if(err) throw err;
-           res.json({success: true, canvas: canvas,  msg: "Canvas Fetched!"})
+           res.json({success: true, canvas: canvas[0],  msg: "Canvas Fetched!"})
     })
 });
+
+// Get Canvas
+router.get('/getCanvases/:username', (req, res, next) => {
+
+    let canvases = [];
+
+    canvas.getCanvas({Username: req.params.username}, (err, canvas) => {
+    if(err) throw err;
+
+    canvas.forEach(canvas => {
+        canvases.push(canvas)
+    });
+
+    res.json({success: true, canvas: canvases,  msg: "Canvas Fetched!"})
+})
+});
+
+
+router.get('/getCanvasLstForEdit/:username',(req,res ,next)=>{
+    canvas.getCanvasLstForEdit({Username:req.params.username},(err,canvas)=>{
+        if(err)throw err;
+        res.json({success:true ,canvasLstEdit :canvas })
+    })
+});
+
 
 
 module.exports = router;

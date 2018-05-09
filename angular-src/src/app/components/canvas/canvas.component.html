@@ -62,7 +62,6 @@
 
   <div class="row">
     <div class="col-xs-1 col-sm-3 " align="center"  >
-
       <div class="card" >
         <div class="card-block">
           <label for="getTxt"> Canvas Size</label>
@@ -120,24 +119,19 @@
         </div>
       </div>
 
-
-
-
-
-
-      <div class="card" >
-        <div class="card-block">
-          <div class="form-group">
-            <label for="getTxt"> Add Text</label>
-            <div class="input-group">
-              <input type="text" id="getTxt" class="form-control"  placeholder="Text..."  [(ngModel)]="textString">
-              <span class="input-group-btn">
-              <button class="btn btn-secondary" type="button" (click)="getText()">Add</button>
-            </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!--<div class="card" >-->
+        <!--<div class="card-block">-->
+          <!--<div class="form-group">-->
+            <!--<label for="getTxt"> Add Text</label>-->
+            <!--<div class="input-group">-->
+              <!--<input type="text" id="getTxt" class="form-control"  placeholder="Text..."  [(ngModel)]="textString">-->
+              <!--<span class="input-group-btn">-->
+              <!--<button class="btn btn-secondary" type="button" (click)="getText()">Add</button>-->
+            <!--</span>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
       <div class="card" >
         <div class="card-block">
           <!--<a href="#"><i class="fa fa-upload"></i></a>-->
@@ -164,10 +158,6 @@
 
 
 
-
-
-
-
     </div>
     <div class=" col-xs-10 col-sm-7  middle"style="height: 700px " >
       <canvas id="canvas"></canvas>
@@ -177,32 +167,37 @@
 
 
     <div class="col-xs-1  col-sm-2 " >
-       <h6>sec 4</h6>
-
         <br/>
+      <div class="card" >
+        <div class="card-block">
+          <div class="form-group">
+            <label for="getTxt"> Add Text</label>
+            <div class="input-group">
+              <input type="text" id="getTxt" class="form-control"  placeholder="Text..."  [(ngModel)]="textString">
+              <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button" (click)="getText()">Add</button>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
 
-        <br/>
         <div class="card">
-          <div class="card-header">Custom</div>
+          <div class="card-header"><label>Custom</label></div>
           <div class="card-body">
-
-
-
             <!--@@fill-->
             <div class="custom-item" *ngIf="selected && textEditor || selected && figureEditor">
-              <div class="custom-item-title">Fill</div>
+              <div class="custom-item-title"><label>Fill</label></div>
               <div class="custom-item-body">
                 <input type="text" class="form-control" [cpPosition]="'left'" [cpOutputFormat] ="'rgba'"
                        [(colorPicker)]="props.fill" [style.background]="props.fill"
                        [value]="props.fill" (colorPickerChange)="setFill()">
               </div>
             </div>
-
-
-
-
+            <br>
             <div class="custom-item" *ngIf="selected && textEditor">
-              <div class="custom-item-title">Font family</div>
+              <div class="custom-item-title"><label>Font family</label></div>
               <div class="custom-item-body">
                 <select [(ngModel)]="props.fontFamily" class="form-control" (change)="setFontFamily()">
                   <option value="Times New Roman">Times New Roman</option>
@@ -219,6 +214,7 @@
                 </select>
               </div>
             </div>
+            <br>
 
 
             <!--<div class="custom-item" *ngIf="selected && textEditor">-->
@@ -245,14 +241,14 @@
 
 
             <div class="custom-item" *ngIf="selected && textEditor">
-              <div class="custom-item-title">Font Size</div>
+              <div class="custom-item-title"><label>Font Size</label></div>
               <div class="custom-item-body">
                 <input type="range" [(ngModel)]="props.fontSize" (change)="setFontSize()" step="1" min="1" max="120">
                 {{props.fontSize}}</div>
             </div>
 
             <div class="custom-item" *ngIf="selected && textEditor">
-              <div class="custom-item-title">Char Spacing</div>
+              <div class="custom-item-title"><label>Char Spacing</label></div>
               <div class="custom-item-body">
                 <input type="range" [(ngModel)]="props.charSpacing" (change)="setCharSpacing()" step="10" min="-200" max="800">
                 {{props.charSpacing}}</div>
@@ -268,9 +264,7 @@
     </div>
   </div>
   <div class="row">
-    <!--<div class="col-xl-12 getToolbarContainer"></div>-->
     <div class="col-sm-12 menue ">
-      <h1>sec5</h1>
     </div>
   </div>
 </div>

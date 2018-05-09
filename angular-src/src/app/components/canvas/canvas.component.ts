@@ -30,6 +30,7 @@ export class CanvasComponent implements OnInit {
   //upload img
   private url: string = '';
   private backgroundImgUrl:string="";
+  private canvasElementArr: any;
 
   private size: any = {
     width: 500,
@@ -78,7 +79,8 @@ export class CanvasComponent implements OnInit {
       width :this.size.width,
       height: this.size.height,
     });
-   // console.log(this.canvas);
+
+
 
     this.canvas.on({
       'object:moving': (e) => { },
@@ -103,12 +105,12 @@ export class CanvasComponent implements OnInit {
          // this.getOpacity();
 
           switch (selectedObject.type) {
-            case 'rect':
-            case 'circle':
-            case 'triangle':
-              this.figureEditor = true;
-              this.getFill();
-              break;
+            // case 'rect':
+            // case 'circle':
+            // case 'triangle':
+            //   this.figureEditor = true;
+            //   this.getFill();
+            //   break;
             case 'text':
               this.textEditor = true;
               console.log('textEditor:',this.textEditor);
@@ -268,13 +270,30 @@ export class CanvasComponent implements OnInit {
 
   loadCanvasFromJSON() {
 
-    let CANVAS= this.canService.getCanvas(localStorage.getItem("username"), "name");
+    this.canService.getCanvas(localStorage.getItem("username"), "name").subscribe(
+      (data) => {
+
+        // console.log(data);
+
+        this.canvasElementArr= data.canvas;
+        console.log("load canvas from json");
+        console.log(this.canvasElementArr);
+        // console.log(data.canvas.CanvasElement);
+
+        this.canvas.loadFromJSON(this.canvasElementArr.CanvasElement, () => {
+
+          this.canvas.renderAll();
+
+        });
+
+      }
+    );
 
 
 
     //let CANVAS = localStorage.getItem('Kanvas');
-    console.log('CANVAS');
-    console.log(CANVAS);
+    //console.log('CANVAS');
+    //console.log(CANVAS);
 
     // and load everything from the same json
 
@@ -317,6 +336,7 @@ export class CanvasComponent implements OnInit {
     object.setCoords();
     this.canvas.renderAll();
   }
+
   getActiveProp(name) {
     let object = this.canvas.getActiveObject();
     if (!object) return '';

@@ -33,6 +33,10 @@ module.exports.getCanvas = function ( canvasParam ,callback) {
     Canvas.find( canvasParam , callback);
 };
 
+module.exports.getCanvasLstForEdit =function (Username ,callback) {
+    const query = {Username: Username};
+    Canvas.find(query, callback);
+};
 
 
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders,HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
+import {Response} from "../models/response";
 
 
 @Injectable()
@@ -41,10 +42,17 @@ export class CanService {
 
   }
 
-  getCanvas(username: string, canvasName: string) {
-    return this.http.get("http://localhost:3000/canvasRoutes/getCanvas/".concat(username).concat("/").concat(canvasName))
-      .subscribe(canvas => {
-        console.log(canvas);
-      });
-  }
+//   getCanvas(username: string, canvasName: string) {
+//     return this.http.get("http://localhost:3000/canvasRoutes/getCanvas/".concat(username).concat("/").concat(canvasName))
+//       .subscribe(canvas => {
+//         console.log(canvas);
+//       });
+//   }
+// }
+getCanvas(username: string, canvasName: string) {
+  return this.http.get<Response>("http://localhost:3000/canvasRoutes/getCanvas/".concat(username).concat("/").concat(canvasName))
+    .map(res =>res);
+    }
 }
+
+
