@@ -18,8 +18,6 @@ import {CanvasComponent} from "../canvas/canvas.component";
 export class ProfileComponent implements OnInit {
 
 
-  //
-  @ViewChild(CanvasComponent) private child:CanvasComponent;
   user:any;
   canveses: any[];
 
@@ -54,12 +52,7 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  invokeChildCmpMethod(canvasName){
-    console.log(canvasName);
-    this.child.loadCanvasFromJSON();
 
-
-  }
 
 
 }

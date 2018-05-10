@@ -12,7 +12,7 @@ router.post('/addCanvas' ,(req, res ,next) => {
     console.log(req.body);
 
     let newCanvas = new canvas ({
-        CanvasName: "name",
+        CanvasName: req.body.CanvasName,
         Username :req.body.Username ,
         CanvasElement: req.body.CanvasElement
     });

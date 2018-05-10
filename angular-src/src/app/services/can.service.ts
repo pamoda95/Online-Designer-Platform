@@ -18,9 +18,9 @@ export class CanService {
   constructor(private http :HttpClient ) { }
 
 //supports to save canvas objects
-  saveCanvas(canvas:any, username: string){
+  saveCanvas(canvas:any, username: string,canvasname :string){
 
-    this.CanvasName=canvas.CanvasName;
+    this.CanvasName=canvasname;
     this.Username=username;
     this.CanvasElement=canvas;
 

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule,Routes} from "@angular/router";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -13,6 +14,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {ValidateService} from "./services/validate.service";
 import {AuthService} from "./services/auth.service";
 import { CanvasComponent } from './components/canvas/canvas.component';
+import {ProfileService} from "./services/profile.service";
 //import {FlashMessagesModule} from "angular2-flash-messages";
 import { ColorPickerModule } from 'ngx-color-picker';
 
@@ -42,10 +44,11 @@ const appRoutes :Routes =[
     RouterModule.forRoot(appRoutes),
     //FlashMessagesModule
     ReactiveFormsModule,
-    ColorPickerModule
+    ColorPickerModule,
+    NgbModule
 
   ],
-  providers: [ValidateService ,AuthService],
+  providers: [ValidateService ,AuthService,ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

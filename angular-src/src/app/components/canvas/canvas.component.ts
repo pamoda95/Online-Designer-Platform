@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder ,FormGroup,Validators} from "@angular/forms";
 
+import {ProfileService} from "../../services/profile.service";
 import {CanService} from "../../services/can.service";
 import 'fabric';
 declare const fabric: any;
@@ -20,10 +21,13 @@ import * as jsPDF from 'jspdf';
 })
 export class CanvasComponent implements OnInit {
 
+  //to display canvas list of user
+  canveses: any[];
   // image
   form: FormGroup;
   loading: boolean = false;
 
+  private canvasname :string;
   private canvas;
   //get text
   private textString;
@@ -65,12 +69,20 @@ export class CanvasComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private canService :CanService
+    private canService :CanService,
+    private profileService :ProfileService,
   ) {
     // this.createForm();
   }
 
   ngOnInit() {
+
+   //to display canvas list of user
+    this.profileService.getCanvasLst(localStorage.getItem("username")).subscribe(result=>{
+      this.canveses = result.canvas;
+      console.log(this.canveses);
+    });
+
     this.canvas = new fabric.Canvas('canvas', {
       // selection: false,
       hoverCursor: 'pointer',
@@ -258,23 +270,26 @@ export class CanvasComponent implements OnInit {
 
 
   saveCanvasToJSON() {
+
+    console.log(this.canvasname);
     let json = JSON.stringify(this.canvas);
     localStorage.setItem('Kanvas', json);
    //  console.log('json');
      console.log(json);
-    this.canService.saveCanvas(json, localStorage.getItem("username"));
+    this.canService.saveCanvas(json, localStorage.getItem("username"),this.canvasname);
 
 
   }
 
 
-  loadCanvasFromJSON() {
+  loadCanvasFromJSON(canvasName) {
 
-    this.canService.getCanvas(localStorage.getItem("username"), "name").subscribe(
+    this.canService.getCanvas(localStorage.getItem("username"), canvasName).subscribe(
       (data) => {
 
         // console.log(data);
 
+        console.log("canvas");
         this.canvasElementArr= data.canvas;
         console.log("load canvas from json");
         console.log(this.canvasElementArr);
