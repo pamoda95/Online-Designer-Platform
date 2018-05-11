@@ -22,9 +22,9 @@ export class ProfileComponent implements OnInit {
   canveses: any[];
 
   constructor(
-    private authService :AuthService,
-    private profileService :ProfileService,
-    private router  :Router
+    protected authService :AuthService,
+    protected profileService :ProfileService,
+    protected router  :Router
   ) { }
 
   ngOnInit() {

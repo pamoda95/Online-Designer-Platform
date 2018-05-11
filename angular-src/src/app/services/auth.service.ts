@@ -30,7 +30,7 @@ export class AuthService {
     this.email=user.email;
     this.password=user.password;
 
-    return this.http.post('http://localhost:3000/users/register', {
+    return this.http.post('/users/register', {
       name: this.name,
       username: this.username,
       email: this.email,
@@ -52,7 +52,7 @@ export class AuthService {
 
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post<Tokenresponse>('http://localhost:3000/users/authenticate', {username: username, password: password})
+    return this.http.post<Tokenresponse>('/users/authenticate', {username: username, password: password})
       .map((response) => {
         // login successful if there's a jwt token in the response
         const token = response.token;
@@ -99,7 +99,7 @@ export class AuthService {
     // headers.append('Content-Type','application/json');
     //
 
-    return this.http.get<User>('http://localhost:3000/users/profile',httpOptions )
+    return this.http.get<User>('/users/profile',httpOptions )
       .map((response) => {
         this.user=response.user;
 

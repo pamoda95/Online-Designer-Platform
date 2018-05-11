@@ -25,7 +25,7 @@ export class CanService {
     this.CanvasElement=canvas;
 
 
-    return this.http.post('http://localhost:3000/canvasRoutes/addCanvas', {
+    return this.http.post('/canvasRoutes/addCanvas', {
       CanvasName: this.CanvasName,
       Username: this.Username,
       CanvasElement: this.CanvasElement,
@@ -50,7 +50,7 @@ export class CanService {
 //   }
 // }
 getCanvas(username: string, canvasName: string) {
-  return this.http.get<Response>("http://localhost:3000/canvasRoutes/getCanvas/".concat(username).concat("/").concat(canvasName))
+  return this.http.get<Response>("/canvasRoutes/getCanvas/".concat(username).concat("/").concat(canvasName))
     .map(res =>res);
     }
 }

@@ -27,22 +27,22 @@ export class CanvasComponent implements OnInit {
   form: FormGroup;
   loading: boolean = false;
 
-  private canvasname :string;
-  private canvas;
+  canvasname :string;
+  canvas;
   //get text
-  private textString;
+ textString;
   //upload img
-  private url: string = '';
-  private backgroundImgUrl:string="";
-  private canvasElementArr: any;
+  url: string = '';
+  backgroundImgUrl:string="";
+  canvasElementArr: any;
 
-  private size: any = {
+  size: any = {
     width: 500,
     height: 300
   };
 
 
-  private props: any = {
+  props: any = {
     canvasFill: '#ffffff',
     // canvasImage: '',
     // id: null,
@@ -58,19 +58,19 @@ export class CanvasComponent implements OnInit {
     // TextDecoration: ''
   };
 
-  private json: any;
-  private globalEditor: boolean = false;
-  private textEditor: boolean = false;
-  private imageEditor: boolean = false;
-  private figureEditor: boolean = false;
-  private selected: any;
+  json: any;
+  globalEditor: boolean = false;
+  textEditor: boolean = false;
+  imageEditor: boolean = false;
+  figureEditor: boolean = false;
+  selected: any;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(
-    private fb: FormBuilder,
-    private canService :CanService,
-    private profileService :ProfileService,
+    protected fb: FormBuilder,
+    protected canService :CanService,
+    protected profileService :ProfileService,
   ) {
     // this.createForm();
   }
@@ -154,7 +154,7 @@ export class CanvasComponent implements OnInit {
 
 
   //To change canvas size
-  changeSize(event: any) {
+  changeSize() {
     this.canvas.setWidth(this.size.width);
     this.canvas.setHeight(this.size.height);
   }
@@ -238,6 +238,7 @@ export class CanvasComponent implements OnInit {
       let reader = new FileReader();
       reader.onload = (event) => {
         this.url = event.target['result'];
+        console.log(this.url);
       };
       reader.readAsDataURL(event.target.files[0]);
     }

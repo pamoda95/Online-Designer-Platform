@@ -45,7 +45,9 @@ const appRoutes :Routes =[
     //FlashMessagesModule
     ReactiveFormsModule,
     ColorPickerModule,
-    NgbModule
+    NgbModule,
+
+
 
   ],
   providers: [ValidateService ,AuthService,ProfileService],

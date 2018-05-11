@@ -11,7 +11,7 @@ export class ProfileService {
   constructor(private http :HttpClient) { }
 
   getCanvasLst(username:string){
-    return this.http.get<CanvasesResponse>("http://localhost:3000/canvasRoutes/getCanvases/".concat(username))
+    return this.http.get<CanvasesResponse>("/canvasRoutes/getCanvases/".concat(username))
       .map(res=>res);
 
   }

@@ -14,16 +14,16 @@ export class RegisterComponent implements OnInit {
 
   loading = false;
 
-  private  name : String;
-  private username :String;
-  private email :String;
-  private password : String;
+  name : String;
+  username :String;
+  email :String;
+  password : String;
 
   //private flashMessage :FlashMessagesService add this
   constructor(
-    private validateService :ValidateService,
-    private authService :AuthService,
-    private router:Router
+    protected validateService :ValidateService,
+    protected authService :AuthService,
+    protected router:Router
   ) { }
 
   ngOnInit() {

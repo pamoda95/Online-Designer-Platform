@@ -11,8 +11,8 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
 
-  private username :string;
-  private password :string;
+  username :string;
+  password :string;
  // model: any = {};
   loading = false;
  // error = '';
@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
-    private authService:AuthService,
-    private router:Router
+    protected authService:AuthService,
+    protected router:Router
     //flshmsg
   ) { }
 
