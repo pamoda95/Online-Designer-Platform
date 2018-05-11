@@ -17,6 +17,7 @@ import { CanvasComponent } from './components/canvas/canvas.component';
 import {ProfileService} from "./services/profile.service";
 //import {FlashMessagesModule} from "angular2-flash-messages";
 import { ColorPickerModule } from 'ngx-color-picker';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 const appRoutes :Routes =[
   {path :'' ,component:HomeComponent},
@@ -50,7 +51,8 @@ const appRoutes :Routes =[
 
 
   ],
-  providers: [ValidateService ,AuthService,ProfileService],
+  providers: [ValidateService ,AuthService,ProfileService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
