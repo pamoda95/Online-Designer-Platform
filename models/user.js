@@ -55,12 +55,4 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 };
 
 
-// module.exports.sayHello=function () {
-//     return'hello';
-//
-// };
-module.exports={
-    sayHello: function () {
-        return 'hello'
-    }
-};
+
