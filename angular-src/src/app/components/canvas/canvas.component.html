@@ -19,7 +19,7 @@
         <li class="dropdown list-inline-item">
           <a class="dropdown-toggle" data-toggle="dropdown">Edit</a>
           <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
+            <li><a (click)="confirmClear()">Clear All</a></li>
             <li><a href="#">Page 1-2</a></li>
             <li><a href="#">Page 1-3</a></li>
           </ul>
@@ -37,14 +37,13 @@
   </div>
   <div class="row">
     <div class="icon-bar col-sm-12 ">
-      <a href="#"><i class="fa fa-sign-in"></i></a>
-      <a href="#"><i class="fa fa-sign-out"></i></a>
+      <a (click)="onLogoutClick()"><i class="fa fa-sign-out"></i></a>
       <a href="#"><i class="fa fa-cloud"></i></a>
       <!--<a (click)="loadCanvasFromJSON();"><i class="fa fa-share"></i></a>-->
       <a (click)="downloadPDF()"><i class="fa fa-download"></i></a>
       <!--(click)="saveCanvasToJSON();"-->
       <a data-toggle="modal" data-target="#saveDesign" ><i class="fa fa-save"></i></a>
-      <a (click)="removeSelected();"><i class="fa fa-trash"></i></a>
+      <a (click)="removeSelected()"><i class="fa fa-trash"></i></a>
 
 
       <!--<button data-toggle="tooltip" data-placement="bottom" title="Delete element" type="button" class="btn btn-outline-danger" [disabled]="!selected"-->
@@ -99,14 +98,12 @@
               <label>Enetr Canvas Name </label>
               <input type="text" class ="form-control" [(ngModel)] ="canvasname" name="canvasname">
             </div>
-
-            <input  type="submit" class="btn btn-default" value="Login">
+            <input  type="submit" class="btn btn-default" value="save">
           </form>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <!--<button type="button" class="btn btn-primary">Save changes</button>-->
         </div>
       </div>
     </div>

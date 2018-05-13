@@ -4,3 +4,22 @@
   font-family: "Comic Sans MS", cursive, sans-serif;
   /*color: green;*/
 }
+
+
+
+.btn-default {
+  color: whitesmoke;
+  background-color: #333333;
+  border-color: #333333;
+  width: 200px;
+  height: 50px;
+
+}
+.btn:hover {
+  color: green;
+  background-color: #333333;
+}
+
+.btn::value{
+  size: 45px;
+}

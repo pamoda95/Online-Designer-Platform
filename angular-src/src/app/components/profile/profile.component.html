@@ -60,32 +60,29 @@
   </div>
   <br>
 
+  <!--<div class="row">-->
+    <!--<div class="col-xs-1 col-sm-3 " align="center"  >-->
+      <!--<div class="card" >-->
+        <!--<div class="card-block">-->
+          <!--<div class="form-group">-->
+            <!--<label > Edit Design </label>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
-  <div class="row">
-    <div class="col-xs-1 col-sm-3 " align="center"  >
-      <div class="card" >
-        <div class="card-block">
-          <div class="form-group">
-            <label > Edit Design </label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <!--<div *ngFor="let canvas of canveses">-->
+    <!--<p (click)="invokeChildCmpMethod(canvas.CanvasName)">{{canvas.CanvasName}}</p>-->
+  <!--</div>-->
 
 
-  <div *ngFor="let canvas of canveses">
-
-    <p (click)="invokeChildCmpMethod(canvas.CanvasName)">{{canvas.CanvasName}}</p>
-  </div>
-
+  <input   class="btn btn-default"   [routerLink]="['/canvas']" value="Start">
 
 </div>
 
 
-
-
-<input   class="btn btn-default"   [routerLink]="['/canvas']" value="Login">
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

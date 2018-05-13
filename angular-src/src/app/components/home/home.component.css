@@ -1,25 +1,62 @@
 @media (min-width: 1200px) {
   .container{
     max-width: 100%;
-
+    min-width: 100%;
+    max-height: 100%;
+    padding-right: 0; /*15px in bootstrap.css*/
+    padding-left: 0;  /*idem*/
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
-body,html{
-  height: 100%;
+.btn-default {
+  color: whitesmoke;
+  background-color: #333333;
+  border-color: #333333;
+
 }
-.bg {
-  background-image: url("assets/img/home.jpg");
-  background-repeat: no-repeat;
-  background-image: url("assets/img/home.jpg") no-repeat;
+.btn:hover {
+  color: green;
+  background-color: #333333;
+}
+
+#header{
+  color: green;
+  font-size: 40px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: green;
 }
 
 
+/*.alt-grid [class*="col-"] {padding-left:0;padding-right:0}*/
+/*.alt-grid .row {margin-left:0;margin-right:0}*/
+
+/*!* container adjusted *!*/
+/*.alt-grid .container {width:100%;max-width:none;padding:0;}*/
+/*.banner{*/
+  /*width: 100%;*/
+/*}*/
+
+/*body,html{*/
+  /*height: 100%;*/
+/*}*/
+
+/*.bg{*/
+  /*background-image: url("../../../assets/img/h1.jpg");*/
 
 
+  /*height: 100%;*/
 
-/*footer*/
-body{background-color: #fff;}
+  /*background-position: center;*/
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
+
+/*}*/
+
+
+/*!*footer*!*/
+/*body{background-color: #fff;}*/
 
 .social-icon {
   list-style: none;

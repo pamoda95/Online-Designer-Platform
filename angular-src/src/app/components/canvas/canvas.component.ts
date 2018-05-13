@@ -7,6 +7,8 @@ import 'fabric';
 declare const fabric: any;
 //declare const jsPDF ;
 import * as jsPDF from 'jspdf';
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 
 //import * as domtoimage from 'dom-to-image';
@@ -22,6 +24,7 @@ import * as jsPDF from 'jspdf';
 export class CanvasComponent implements OnInit {
 
   //to display canvas list of user
+  user :any;
   canveses: any[];
   // image
   form: FormGroup;
@@ -71,11 +74,15 @@ export class CanvasComponent implements OnInit {
     protected fb: FormBuilder,
     protected canService :CanService,
     protected profileService :ProfileService,
+    protected authService :AuthService,
+    protected router  :Router
   ) {
     // this.createForm();
   }
 
   ngOnInit() {
+
+    this.user=localStorage.getItem('username');
 
    //to display canvas list of user
     this.profileService.getCanvasLst(localStorage.getItem("username")).subscribe(result=>{
@@ -442,8 +449,9 @@ export class CanvasComponent implements OnInit {
     pdf.save("download.pdf");
 
   }
-
-
+  confirmClear() {
+      this.canvas.clear();
+  }
 
 
 
@@ -451,6 +459,11 @@ export class CanvasComponent implements OnInit {
     this.textEditor = false;
     this.imageEditor = false;
     this.figureEditor = false;
+  }
+
+  onLogoutClick(){
+    this.authService.logout();
+    this.router.navigate(['/login'])
   }
 
 
