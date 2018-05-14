@@ -48,18 +48,18 @@ export class RegisterComponent implements OnInit {
 
 
 
-    //Required Fields
-    // if(!this.validateService.validateRegister(user)){
-    //     alert("Please fill in all fields");
-    //   //  this.flashMessage.show('Please fill in all fields',{cssClass:'alert-danger',timeout:3000});
-    //     return false;
-    // }
-    // //Validate Email
-    // if(!this.validateService.validateEmail(user.email)){
-    //   alert("Please use a valid email");
-    //   //this.flashMessage.show('Please use a valid email',{cssClass:'alert-danger',timeout:3000});
-    //   return false;
-    // }
+   // Required Fields
+    if(!this.validateService.validateRegister(user)){
+        alert("Please fill in all fields");
+      //  this.flashMessage.show('Please fill in all fields',{cssClass:'alert-danger',timeout:3000});
+        return false;
+    }
+    //Validate Email
+    if(!this.validateService.validateEmail(user.email)){
+      alert("Please use a valid email");
+      //this.flashMessage.show('Please use a valid email',{cssClass:'alert-danger',timeout:3000});
+      return false;
+    }
 
 
 

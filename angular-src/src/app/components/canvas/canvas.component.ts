@@ -47,18 +47,11 @@ export class CanvasComponent implements OnInit {
 
   props: any = {
     canvasFill: '#ffffff',
-    // canvasImage: '',
-    // id: null,
-    // opacity: null,
     fill: null,
     fontSize: null,
-    // lineHeight: null,
     charSpacing: null,
-    // fontWeight: null,
     fontStyle: null,
-    // textAlign: null,
     fontFamily: null,
-    // TextDecoration: ''
   };
 
   json: any;
@@ -114,32 +107,20 @@ export class CanvasComponent implements OnInit {
         console.log('selected :',this.selected);
         selectedObject.hasRotatingPoint = true;
         selectedObject.transparentCorners = false;
-        // selectedObject.cornerColor = 'rgba(255, 87, 34, 0.7)';
+
 
         this.resetPanels();
 
         if (selectedObject.type !== 'group' && selectedObject) {
 
-         // this.getId();
-         // this.getOpacity();
+
 
           switch (selectedObject.type) {
-            // case 'rect':
-            // case 'circle':
-            // case 'triangle':
-            //   this.figureEditor = true;
-            //   this.getFill();
-            //   break;
             case 'text':
               this.textEditor = true;
               console.log('textEditor:',this.textEditor);
-             // this.getLineHeight();
               this.getCharSpacing();
-             // this.getBold();
-             // this.getFontStyle();
               this.getFill();
-             // this.getTextDecoration();
-             // this.getTextAlign();
               this.getFontFamily();
               break;
             case 'image':
@@ -154,7 +135,6 @@ export class CanvasComponent implements OnInit {
       }
     });
 
-    // this.canService.getCanvas("pamo", "name");
   }
 
 
@@ -166,14 +146,14 @@ export class CanvasComponent implements OnInit {
     this.canvas.setHeight(this.size.height);
   }
 
-
+//get text from user
   getText(){
     let text = new fabric.Text(this.textString, { left: 100, top: 100 });
     this.canvas.add(text);
     this.textString='';
 
   }
-
+//set background of the canvas
   setBackgroundImage(url){
 
     if (url) {
@@ -185,10 +165,6 @@ export class CanvasComponent implements OnInit {
           hasRotatingPoint: true
         });
 
-        // image.setWidth(this.size.width);
-        // image.setHeight(this.size.height);
-
-
         //set background Image
         this.canvas.setBackgroundImage(image, this.canvas.renderAll.bind(this.canvas), {
           backgroundImageOpacity: 0.5,
@@ -199,6 +175,7 @@ export class CanvasComponent implements OnInit {
     }
 
   }
+  //read image url
   readBackgroundImagUrl(event) {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
@@ -276,7 +253,7 @@ export class CanvasComponent implements OnInit {
 
 
 
-
+ //save the canvas as JSON object
   saveCanvasToJSON() {
 
     console.log(this.canvasname);
@@ -289,7 +266,7 @@ export class CanvasComponent implements OnInit {
 
   }
 
-
+  //get canvas from database and load it to canvas
   loadCanvasFromJSON(canvasName) {
 
     this.canService.getCanvas(localStorage.getItem("username"), canvasName).subscribe(
@@ -313,24 +290,9 @@ export class CanvasComponent implements OnInit {
     );
 
 
-
-    //let CANVAS = localStorage.getItem('Kanvas');
-    //console.log('CANVAS');
-    //console.log(CANVAS);
-
-    // and load everything from the same json
-
-    // this.canvas.loadFromJSON(CANVAS, () => {
-    //   console.log('CANVAS untar');
-    //   console.log(CANVAS);
-    //
-    //
-    //   this.canvas.renderAll();
-    //
-    //   console.log(this.canvas);
-    // });
-
   };
+
+  //get the active style of the selected object
 
   getActiveStyle(styleName, object) {
     object = object || this.canvas.getActiveObject();
@@ -341,7 +303,7 @@ export class CanvasComponent implements OnInit {
       : (object[styleName] || '');
   }
 
-
+//change the style of the selected object
   setActiveStyle(styleName, value, object) {
     object = object || this.canvas.getActiveObject();
     if (!object) return;
@@ -360,6 +322,7 @@ export class CanvasComponent implements OnInit {
     this.canvas.renderAll();
   }
 
+  //get selected object of the canvas
   getActiveProp(name) {
     let object = this.canvas.getActiveObject();
     if (!object) return '';
@@ -367,6 +330,7 @@ export class CanvasComponent implements OnInit {
     return object[name] || '';
   }
 
+  //change  selected object of the canvas
   setActiveProp(name, value) {
     let object = this.canvas.getActiveObject();
     if (!object) return;
@@ -374,41 +338,43 @@ export class CanvasComponent implements OnInit {
     this.canvas.renderAll();
   }
 
+  //change the font size
   setFontSize() {
     this.setActiveStyle('fontSize', parseInt(this.props.fontSize), null);
   }
 
-
+//get the character spacing of selected text
   getCharSpacing() {
     this.props.charSpacing = this.getActiveStyle('charSpacing', null);
   }
-
+//change  the character spacing of selected text
   setCharSpacing() {
     this.setActiveStyle('charSpacing', this.props.charSpacing, null);
   }
-
+//get the active color of the selected text
   getFill() {
     this.props.fill = this.getActiveStyle('fill', null);
   }
-
+//change the active color of the selected text
   setFill() {
     this.setActiveStyle('fill', this.props.fill, null);
   }
-
+//get the font style of the selected text
   getFontStyle() {
     this.props.fontStyle = this.getActiveStyle('fontStyle', null);
   }
-
+//change the font
   setFontStyle() {
     this.props.fontStyle = !this.props.fontStyle;
     this.setActiveStyle('fontStyle', this.props.fontStyle ? 'italic' : '', null);
   }
 
-
+//get the font family of selected object
   getFontFamily() {
     this.props.fontFamily = this.getActiveProp('fontFamily');
   }
 
+  //change the font family of selected object
   setFontFamily() {
     this.setActiveProp('fontFamily', this.props.fontFamily);
   }
@@ -417,7 +383,7 @@ export class CanvasComponent implements OnInit {
 
 
 
-
+//remove the selected object
   removeSelected() {
     let activeObject = this.canvas.getActiveObject(),
       activeGroup = this.canvas.getActiveGroup();
@@ -449,6 +415,8 @@ export class CanvasComponent implements OnInit {
     pdf.save("download.pdf");
 
   }
+
+  //clear the canvas
   confirmClear() {
       this.canvas.clear();
   }
