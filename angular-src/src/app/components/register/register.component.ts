@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  loading = false;
+  // loading = false;
 
   name : String;
   username :String;
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterSubmit(){
-    this.loading = true;
+    // this.loading = ;
 
     console.log(this.name);
     console.log(this.email);
