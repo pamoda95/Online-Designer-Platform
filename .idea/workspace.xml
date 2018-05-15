@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b6a99349-971c-4cb0-9e15-d9f5a032cd80" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/angular-src/src/app/components/register/register.component.ts" afterPath="$PROJECT_DIR$/angular-src/src/app/components/register/register.component.ts" />
-      <change beforePath="$PROJECT_DIR$/angular-src/src/app/services/validate.service.ts" afterPath="$PROJECT_DIR$/angular-src/src/app/services/validate.service.ts" />
+      <change beforePath="$PROJECT_DIR$/angular-src/src/app/components/register/register.component.html" afterPath="$PROJECT_DIR$/angular-src/src/app/components/register/register.component.html" />
       <change beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change beforePath="$PROJECT_DIR$/public/inline.4f654dc43a7f4956d165.bundle.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/public/main.9df29f99706d9ad63b2f.bundle.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/inline.282fb6b6b323ae9b1c8f.bundle.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/main.bf064bf1a4bfa4025774.bundle.js" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,17 +41,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="register.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/angular-src/src/app/components/register/register.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+            <state relative-caret-position="306">
+              <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular-src/src/app/components/register/register.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -97,8 +96,8 @@
       <file leaf-file-name="login.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular-src/src/app/components/login/login.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -161,7 +160,6 @@
         <option value="$PROJECT_DIR$/angular-src/src/app/models/user.ts" />
         <option value="$PROJECT_DIR$/angular-src/src/app/models/tokenresponse.ts" />
         <option value="$PROJECT_DIR$/angular-src/src/app/models/canvas.ts" />
-        <option value="$PROJECT_DIR$/angular-src/src/app/components/register/register.component.html" />
         <option value="$PROJECT_DIR$/angular-src/src/app/components/login/login.component.css" />
         <option value="$PROJECT_DIR$/angular-src/src/app/components/register/register.component.css" />
         <option value="$PROJECT_DIR$/angular-src/src/app/models/response.ts" />
@@ -203,6 +201,7 @@
         <option value="$PROJECT_DIR$/angular-src/src/app/components/canvas/canvas.component.html" />
         <option value="$PROJECT_DIR$/angular-src/src/app/services/validate.service.ts" />
         <option value="$PROJECT_DIR$/angular-src/src/app/components/register/register.component.ts" />
+        <option value="$PROJECT_DIR$/angular-src/src/app/components/register/register.component.html" />
       </list>
     </option>
   </component>
@@ -285,6 +284,15 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="canvas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Online-Designer-Platform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Online-Designer-Platform" type="462c0819:PsiDirectoryNode" />
+              <item name="angular-src" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Online-Designer-Platform" type="b2602c69:ProjectViewProjectNode" />
@@ -454,7 +462,7 @@
       <workItem from="1526116968234" duration="13426000" />
       <workItem from="1526183014809" duration="27734000" />
       <workItem from="1526311753615" duration="4977000" />
-      <workItem from="1526353370150" duration="2753000" />
+      <workItem from="1526353370150" duration="3271000" />
     </task>
     <servers />
   </component>
@@ -467,7 +475,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="561630000" />
+    <option name="totallyTimeSpent" value="562148000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -833,14 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angular-src/src/app/components/login/login.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/angular-src/src/app/services/validate.service.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -878,14 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angular-src/src/app/components/register/register.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/angular-src/src/app/services/validate.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -898,6 +890,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular-src/src/app/components/login/login.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular-src/src/app/components/register/register.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
           <folding />
         </state>
       </provider>
